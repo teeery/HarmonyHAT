@@ -4,7 +4,11 @@ from docx import Document
 root = Path('.')
 for path in sorted(root.glob('04-团队调研材料/**/*.docx')):
     print(f'\n===== {path} =====')
-    doc = Document(path)
+    try:
+        doc = Document(path)
+    except Exception as exc:
+        print(f'[UNREADABLE: {exc}]')
+        continue
     for p in doc.paragraphs:
         text = p.text.strip()
         if text:
