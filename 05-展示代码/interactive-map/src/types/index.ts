@@ -1,65 +1,99 @@
-export type District = '南城' | '松山湖' | '寮步' | '东城' | '厚街' | '虎门/滨海湾' | '茶山' | '常平';
+// ============================================================
+// 《鸿蒙未来城市探索馆》— 核心类型定义
+// ============================================================
 
-export type VisitType = 'direct' | 'appointment';
-export type Layer = 1 | 2 | 'both';
-export type TimeOfDay = 'day' | 'night' | 'both';
+// ---- 场景系统 ----
 
-export interface ResearchPoint {
-  id: string;
-  name: string;
-  scene: string;
-  district: District;
-  address: string;
-  lat: number;
-  lng: number;
-  visitType: VisitType;
-  appointmentChannel?: string;
-  layer: Layer;
-  days: number[];
-  timeOfDay: TimeOfDay;
-  group?: number;
-  description: string;
-  highlights: string[];
-  researchQuestions: string[];
-  researchMethod: string;
-  targetInterviewee?: string;
-  notes?: string;
-  icon: string;
+/** 全部场景标识（9 个场景） */
+export type SceneId =
+  | 'preloader'
+  | 'prologue'
+  | 'explore-map'
+  | 'field-research'
+  | 'harmony-insight'
+  | 'data-lab'
+  | 'ai-researcher'
+  | 'future-city'
+  | 'epilogue'
+
+/** 场景导航状态 */
+export interface SceneState {
+  current: SceneId
+  previous: SceneId | null
+  /** 当前场景内的滚动进度 0-1 */
+  progress: number
 }
 
-export interface DayRouteData {
-  day: number;
-  date: string;
-  label: string;
-  color: string;
-  periods: {
-    time: string;
-    points: string[];
-    description: string;
-  }[];
+// ---- 导航 ----
+
+export interface NavItem {
+  id: SceneId
+  label: string
+  shortLabel: string
 }
 
-export interface FilterState {
-  day: number | null;        // null = all, 1-4
-  visitType: VisitType | null;
-  district: District | null;
-  layer: Layer | null;
+// ---- 发现卡片（第三幕：田野调查） ----
+
+export interface DiscoveryCard {
+  id: string
+  sceneLabel: string // "社区观察" | "产业观察" | "商业观察" | "公共服务观察"
+  photoUrl: string
+  observation: string  // "我们观察"
+  reflection: string   // "我们思考"
+  futureDirection: string // "未来方向"
+  date: string
+  location: string
 }
 
-export const DAY_CONFIG = [
-  { day: 1, date: '7月28日（周二）', label: 'Day 1 · 感知鸿蒙', color: '#FF6B6B' },
-  { day: 2, date: '7月29日（周三）', label: 'Day 2 · 行业落地', color: '#4ECDC4' },
-  { day: 3, date: '7月30日（周四）', label: 'Day 3 · 生态聚合', color: '#45B7D1' },
-  { day: 4, date: '7月31日（周五）', label: 'Day 4 · 收束对比', color: '#96CEB4' },
-];
+// ---- 数据实验室（第五幕） ----
 
-export const DISTRICT_COLORS: Record<District, string> = {
-  '南城': '#e74c3c',
-  '松山湖': '#3498db',
-  '寮步': '#e67e22',
-  '东城': '#9b59b6',
-  '厚街': '#1abc9c',
-  '虎门/滨海湾': '#2ecc71',
-  '茶山': '#f39c12',
-  '常平': '#34495e',
-};
+export interface ResearchStats {
+  totalSites: number       // 15 个调研场景
+  totalInterviews: number  // 37 份访谈记录
+  totalMinutes: number     // 1280 分钟交流
+  totalTags: number        // 56 个问题标签
+  totalScenarios: number   // 12 个未来场景
+}
+
+export interface DemandNode {
+  id: string
+  label: string
+  score: number        // 1-5 星级
+  connections: string[] // 关联节点 id
+}
+
+// ---- AI 调研员（第六幕） ----
+
+export interface KnowledgeSource {
+  type: 'interview' | 'photo' | 'note' | 'report' | 'policy'
+  title: string
+  date: string
+  excerpt: string
+}
+
+export interface KnowledgeEntry {
+  id: string
+  question: string
+  answer: string
+  sources: KnowledgeSource[]
+  tags: string[]
+}
+
+export interface ChatMessage {
+  id: string
+  role: 'user' | 'assistant'
+  content: string
+  sources?: KnowledgeSource[]
+  timestamp: number
+}
+
+// ---- 动画 ----
+
+export interface ScrollAnimationConfig {
+  /** 视口位置触发点 0-1 */
+  triggerPosition: number
+  /** 动画时长 ms */
+  duration: number
+  /** 延迟 ms */
+  delay: number
+}

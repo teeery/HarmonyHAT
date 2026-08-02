@@ -1,0 +1,63 @@
+/* ============================================================
+   《鸿蒙未来城市探索馆》— 设计令牌 (Design Tokens)
+   ============================================================ */
+
+:root {
+  /* ---- 色彩 ---- */
+  --color-bg-deep: #0a0a0f;
+  --color-bg-card: #1a1a3e;
+  --color-accent: #6c5ce7;       /* 鸿蒙紫 */
+  --color-tech: #4a9eff;         /* 科技蓝 */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: rgba(255, 255, 255, 0.80);
+  --color-text-muted: rgba(255, 255, 255, 0.50);
+  --color-text-faint: rgba(255, 255, 255, 0.30);
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-border-hover: #6c5ce7;
+
+  /* ---- 排版 ---- */
+  --font-sans: 'PingFang SC', 'Microsoft YaHei', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  --text-hero: 64px;
+  --text-title: 48px;
+  --text-subtitle: 36px;
+  --text-heading: 28px;
+  --text-body: 18px;
+  --text-small: 14px;
+  --text-data: 72px;
+
+  --leading-relaxed: 1.8;
+
+  /* ---- 间距 ---- */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 40px;
+  --space-xl: 64px;
+  --space-2xl: 96px;
+  --space-3xl: 128px;
+
+  /* ---- 圆角 ---- */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  /* ---- 动效 ---- */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 0.3s;
+  --duration-normal: 0.6s;
+  --duration-slow: 0.8s;
+  --duration-scene: 1.2s;
+
+  /* ---- 阴影 ---- */
+  --shadow-card: 0 4px 24px rgba(108, 92, 231, 0.08);
+  --shadow-glow: 0 0 40px rgba(108, 92, 231, 0.15);
+
+  /* ---- Z 层级 ---- */
+  --z-preloader: 9999;
+  --z-nav: 1000;
+  --z-overlay: 500;
+  --z-scene: 1;
+}

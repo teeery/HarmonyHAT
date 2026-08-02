@@ -1,122 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useRef } from 'react'
+import {
+  Preloader,
+  Prologue,
+  ExploreMap,
+  FieldResearch,
+  HarmonyInsight,
+  DataLab,
+  AIResearcher,
+  FutureCity,
+  Epilogue,
+} from './scenes'
+import { GlobalNav } from './components/layout/GlobalNav'
 
-function App() {
-  const [count, setCount] = useState(0)
+/**
+ * 《鸿蒙未来城市探索馆》
+ *
+ * 叙事顺序（9 个场景）：
+ *   加载页 → 序章 → 走进南城 → 田野调查 → 鸿蒙洞察
+ *   → 数据实验室 → AI 调研员 → 未来南城 2035 → 尾页
+ *
+ * 交互：全页滚动驱动，右侧全局导航条
+ */
+export default function App() {
+  const containerRef = useRef<HTMLDivElement>(null)
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div ref={containerRef} className="relative">
+      {/* 全局导航条 — 右侧固定 */}
+      <GlobalNav />
 
-      <div className="ticks"></div>
+      {/* 加载页 — 全屏覆盖，完成后消失 */}
+      <Preloader />
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+      {/* 第一幕：序章 — 城市正在连接 */}
+      <Prologue />
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+      {/* 第二幕：走进南城 — 探索地图 */}
+      <ExploreMap />
+
+      {/* 第三幕：田野调查 — 发现卡片 */}
+      <FieldResearch />
+
+      {/* 第四幕：鸿蒙洞察 — 连接的新方式 */}
+      <HarmonyInsight />
+
+      {/* 第五幕：数据实验室 — 调研证据 */}
+      <DataLab />
+
+      {/* 第六幕：AI 调研员 — 让成果继续生长 */}
+      <AIResearcher />
+
+      {/* 第七幕：未来南城 2035 — 青年想象 */}
+      <FutureCity />
+
+      {/* 尾页：青年未来宣言 */}
+      <Epilogue />
+    </div>
   )
 }
-
-export default App
