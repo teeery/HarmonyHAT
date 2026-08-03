@@ -90,7 +90,7 @@ export function HeroSection() {
         {/* 底部地点信息 */}
         <motion.p
           {...fadeUp(1.8)}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-xs tracking-[0.2em] text-white/20 sm:text-sm"
+          className="absolute bottom-8 left-0 right-0 text-center text-xs tracking-[0.2em] text-white/20 sm:text-sm"
         >
           东莞南城 · 2026夏
         </motion.p>

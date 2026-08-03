@@ -37,14 +37,14 @@ export function GlassButton({ onClick }: GlassButtonProps) {
       </motion.button>
 
       {/* 滚动提示 */}
-      <motion.p
+      {/* <motion.p
         className="text-[11px] tracking-[0.35em] text-white/25 font-sans"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.6, duration: 0.6 }}
       >
         Scroll to Explore
-      </motion.p>
+      </motion.p> */}
     </motion.div>
   )
 }
