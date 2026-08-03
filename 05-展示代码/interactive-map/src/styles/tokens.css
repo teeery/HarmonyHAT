@@ -15,8 +15,13 @@
   --color-border: rgba(255, 255, 255, 0.12);
   --color-border-hover: #6c5ce7;
 
+  /* 按钮渐变（探索按钮） */
+  --gradient-btn-start: #0A59F7;
+  --gradient-btn-end: #8A5DFA;
+  --shadow-btn-glow: 0 0 24px rgba(10, 89, 247, 0.35);
+
   /* ---- 排版 ---- */
-  --font-sans: 'PingFang SC', 'Microsoft YaHei', system-ui, -apple-system, sans-serif;
+  --font-sans: 'HarmonyOS Sans SC', 'PingFang SC', 'Microsoft YaHei', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
   --text-hero: 64px;

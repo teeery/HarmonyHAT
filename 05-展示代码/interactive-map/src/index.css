@@ -1,8 +1,8 @@
+@import './styles/tokens.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import './styles/tokens.css';
 
 /* ---- 全局重置 ---- */
 * {
@@ -46,6 +46,41 @@ body, #root {
   color: #ffffff;
 }
 
+/* ---- SVG 数据流关键帧 ---- */
+@keyframes dash-flow-fast {
+  0%   { stroke-dashoffset: 12; }
+  100% { stroke-dashoffset: 0; }
+}
+@keyframes dash-flow-slow {
+  0%   { stroke-dashoffset: 24; }
+  100% { stroke-dashoffset: 0; }
+}
+
+/* ---- Hero 开场动画关键帧 ---- */
+
+/* 城市背景呼吸式缓慢平移 */
+@keyframes city-breathe {
+  0%, 100% { transform: scale(1) translate(0, 0); }
+  33%      { transform: scale(1.04) translate(-0.5%, -0.3%); }
+  66%      { transform: scale(1.03) translate(0.3%, 0.2%); }
+}
+
+/* 浮游数据光点 */
+@keyframes particle-float {
+  0%, 100% { transform: translate(0, 0); opacity: 0.15; }
+  25%      { transform: translate(8px, -12px); opacity: 0.4; }
+  50%      { transform: translate(-4px, -20px); opacity: 0.2; }
+  75%      { transform: translate(-10px, -6px); opacity: 0.35; }
+}
+
+/* 水平光条扫描 */
+@keyframes scan-line {
+  0%   { transform: translateX(-100%); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateX(100vw); opacity: 0; }
+}
+
 /* ---- Tailwind 扩展 ---- */
 @layer components {
   .scene-container {
@@ -75,5 +110,96 @@ body, #root {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  /* 探索按钮 — 蓝紫渐变 + 胶囊圆角 + 外发光 */
+  .btn-explore {
+    background: linear-gradient(
+      135deg,
+      var(--gradient-btn-start),
+      var(--gradient-btn-end)
+    );
+    border: none;
+    border-radius: 9999px;
+    color: #ffffff;
+    box-shadow: var(--shadow-btn-glow);
+    transition: all 0.4s var(--ease-standard);
+  }
+
+  .btn-explore:hover {
+    box-shadow:
+      0 0 40px rgba(10, 89, 247, 0.5),
+      0 0 72px rgba(138, 93, 250, 0.3);
+    transform: scale(1.04);
+  }
+
+  .btn-explore:active {
+    transform: scale(0.97);
+  }
+
+  /* ---- 调研旅程卡片 — 玻璃拟态 + 设计令牌 ---- */
+  .card-journey {
+    background: rgba(26, 26, 62, 0.28);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    transition:
+      border-color var(--duration-normal) var(--ease-standard),
+      box-shadow var(--duration-normal) var(--ease-standard),
+      transform var(--duration-normal) var(--ease-out-expo);
+    overflow: hidden;
+  }
+
+  .card-journey:hover {
+    border-color: var(--color-border-hover);
+    box-shadow: var(--shadow-glow), 0 8px 32px rgba(108, 92, 231, 0.12);
+    transform: translateY(-4px) scale(1.025);
+  }
+
+  .card-journey.is-active {
+    border-color: var(--color-accent);
+    box-shadow:
+      0 0 40px rgba(108, 92, 231, 0.28),
+      0 0 80px rgba(108, 92, 231, 0.08),
+      inset 0 0 40px rgba(108, 92, 231, 0.04);
+  }
+
+  /* 卡片顶部色条渐变 */
+  .card-journey-strip {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-journey-strip::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      var(--color-bg-deep) 0%,
+      transparent 65%
+    );
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  /* 卡片底部渐变过渡（衔接信息区） */
+  .card-journey-fade {
+    background: linear-gradient(
+      to top,
+      rgba(10, 10, 15, 0.95) 0%,
+      transparent 100%
+    );
+  }
+
+  /* 隐藏横向滚动条 */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }

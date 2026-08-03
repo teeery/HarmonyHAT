@@ -31,7 +31,7 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['"Noto Sans SC"', '"PingFang SC"', '"Microsoft YaHei"', 'sans-serif'],
+        sans: ['"HarmonyOS Sans SC"', '"PingFang SC"', '"Microsoft YaHei"', 'sans-serif'],
       },
       animation: {
         'dash-march': 'dash-march 2s linear infinite',

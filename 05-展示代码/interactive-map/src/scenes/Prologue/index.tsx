@@ -1,23 +1,20 @@
+import { HeroSection } from '../../components/HeroSection'
+
 /**
- * 第一幕：序章 — 城市正在连接（约 30 秒）
+ * 第一幕：序章 — 鸿蒙未来城市探索馆
  *
- * 目标：让用户产生问题
- *   阶段 A：城市线框从底部升起
- *   阶段 B：设备光点亮起 + 数据流
- *   阶段 C：字幕逐行出现 + "开始探索"按钮
+ * 作为整个作品的首页入口，融合了原 HeroSection 的全屏开场：
+ *   阶段 A：城市背景图缓慢呼吸 + 数据光点浮游
+ *   阶段 B：标题 "鸿蒙未来城市探索馆" + slogan 渐显
+ *   阶段 C：核心叙事文案 + 追问 + "开始探索" 按钮
  *
- * 关键文案：
- *   "今天，一座城市每天产生数以亿计的数字连接。"
- *   "但连接，是否意味着真正的智慧？"
- *
- * 技术：Three.js 城市线框模型 + 粒子数据流 + CSS 字幕
+ * 目标：用户打开 5 秒内产生
+ *   "这不是一个学生报告，这是一个科技展览。"
  */
 export function Prologue() {
   return (
-    <section className="relative h-screen w-full bg-[var(--color-bg-deep)] overflow-hidden">
-      {/* TODO: Three.js Canvas — 城市线框 + 数据粒子 */}
-      {/* TODO: 字幕叠加层 — 两行文案逐行淡入 */}
-      {/* TODO: "鸿蒙未来城市探索馆" 标题 + "开始探索" 按钮 */}
+    <section id="prologue" className="relative h-screen w-full overflow-hidden">
+      <HeroSection />
     </section>
   )
 }

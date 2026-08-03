@@ -87,6 +87,33 @@ export interface ChatMessage {
   timestamp: number
 }
 
+// ---- 调研旅程（第三幕：时间线卡片） ----
+
+export interface JourneyStop {
+  time: string
+  title: string
+  location: string
+  scene: string
+  description: string
+  highlights: string[]
+}
+
+export interface JourneyDay {
+  id: string
+  dayNumber: 1 | 2 | 3 | 4
+  date: string
+  theme: string
+  subtitle: string
+  coverIcon: string
+  /** 该天核心观察 */
+  observation: string
+  /** 该天核心思考 */
+  reflection: string
+  /** 该天对未来的启发 */
+  futureDirection: string
+  stops: JourneyStop[]
+}
+
 // ---- 动画 ----
 
 export interface ScrollAnimationConfig {

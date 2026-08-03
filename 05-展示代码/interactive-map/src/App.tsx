@@ -1,6 +1,5 @@
 import { useRef } from 'react'
 import {
-  Preloader,
   Prologue,
   ExploreMap,
   FieldResearch,
@@ -15,8 +14,8 @@ import { GlobalNav } from './components/layout/GlobalNav'
 /**
  * 《鸿蒙未来城市探索馆》
  *
- * 叙事顺序（9 个场景）：
- *   加载页 → 序章 → 走进南城 → 田野调查 → 鸿蒙洞察
+ * 叙事顺序（8 个场景）：
+ *   序章（Hero 开场）→ 走进南城 → 田野调查 → 鸿蒙洞察
  *   → 数据实验室 → AI 调研员 → 未来南城 2035 → 尾页
  *
  * 交互：全页滚动驱动，右侧全局导航条
@@ -29,10 +28,7 @@ export default function App() {
       {/* 全局导航条 — 右侧固定 */}
       <GlobalNav />
 
-      {/* 加载页 — 全屏覆盖，完成后消失 */}
-      <Preloader />
-
-      {/* 第一幕：序章 — 城市正在连接 */}
+      {/* 序章：鸿蒙未来城市探索馆 — 全屏 Hero 开场 */}
       <Prologue />
 
       {/* 第二幕：走进南城 — 探索地图 */}
