@@ -28,6 +28,7 @@ export function Epilogue() {
   return (
     <section
       id="epilogue"
+      data-snap-page="epilogue"
       className="scene-container relative flex flex-col items-center justify-center bg-[var(--color-bg-deep)] overflow-hidden"
     >
       {/* ================================================================ */}

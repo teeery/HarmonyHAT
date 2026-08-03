@@ -37,8 +37,10 @@ export function FieldResearch() {
   return (
     <section
       id="field-research"
-      className="relative w-full min-h-screen overflow-hidden"
+      data-snap-page="field-research"
+      className="relative w-full h-screen overflow-y-auto"
       style={{ background: 'var(--color-bg-deep)' }}
+      data-scrollable
     >
       {/* ---- 网格纹理 ---- */}
       <div

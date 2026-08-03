@@ -12,8 +12,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
   overflow-y: scroll;
   height: 100vh;
   background: var(--color-bg-deep);
@@ -92,8 +90,6 @@ body, #root {
   .scene-container {
     @apply relative w-full overflow-x-hidden;
     height: 100dvh;
-    overflow-y: auto;
-    scroll-snap-align: start;
   }
 
   .btn-primary {

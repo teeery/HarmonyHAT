@@ -11,7 +11,7 @@ import { WORD_CLOUD_DATA, INSIGHT_PAIRS, RESEARCH_STATS } from '../../data'
 // ============================================================
 
 const CLOUD_W = 800
-const CLOUD_H = 520
+const CLOUD_H = 380
 
 // ---- 轨道指标配置 ----
 const ORBIT_STATS = [
@@ -26,6 +26,7 @@ export function HarmonyInsight() {
   return (
     <section
       id="harmony-insight"
+      data-snap-page="harmony-insight"
       className="scene-container relative flex flex-col items-center bg-[var(--color-bg-deep)]"
     >
       {/* ================================================================ */}
@@ -45,7 +46,7 @@ export function HarmonyInsight() {
         className="pointer-events-none absolute z-0"
         style={{
           left: '50%', top: '48%',
-          width: 700, height: 600,
+          width: 640, height: 500,
           transform: 'translate(-50%, -50%)',
           background:
             'radial-gradient(ellipse, rgba(108,92,231,0.07) 0%, rgba(74,158,255,0.03) 35%, transparent 65%)',
@@ -55,9 +56,9 @@ export function HarmonyInsight() {
       {/* ================================================================ */}
       {/* 标题区 */}
       {/* ================================================================ */}
-      <header className="relative z-10 text-center px-4 pt-24 md:pt-32 pb-4">
+      <header className="relative z-10 text-center px-4 pt-16 md:pt-20 pb-2">
         <motion.p
-          className="text-xs md:text-sm tracking-[0.3em] text-[var(--color-accent)]/60 font-sans mb-4"
+          className="text-xs md:text-sm tracking-[0.3em] text-[var(--color-accent)]/60 font-sans mb-3"
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -73,7 +74,7 @@ export function HarmonyInsight() {
         </h2>
 
         <motion.p
-          className="mt-5 text-lg md:text-2xl tracking-wider"
+          className="mt-3 text-lg md:text-2xl tracking-wider"
           style={{ color: 'var(--color-accent)' }}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -87,9 +88,9 @@ export function HarmonyInsight() {
       {/* ================================================================ */}
       {/* 词云主体 + 轨道指标 */}
       {/* ================================================================ */}
-      <div className="relative z-10 w-full max-w-[880px] mx-auto mt-6 md:mt-10 mb-8">
+      <div className="relative z-10 w-full max-w-[880px] mx-auto mt-4 md:mt-6 mb-4">
         {/* 轨道指标 — 词云上方 */}
-        <div className="flex justify-center gap-6 md:gap-12 mb-2">
+        <div className="flex justify-center gap-6 md:gap-12 mb-1">
           {ORBIT_STATS.filter((s) => s.pos === 'top').map((s, i) => (
             <OrbitBadge
               key={s.key}
@@ -112,7 +113,7 @@ export function HarmonyInsight() {
         </motion.div>
 
         {/* 轨道指标 — 词云下方 */}
-        <div className="flex justify-center gap-4 md:gap-10 mt-1">
+        <div className="flex justify-center gap-4 md:gap-10 mt-0">
           {ORBIT_STATS.filter((s) => s.pos === 'bottom').map((s, i) => (
             <OrbitBadge
               key={s.key}
@@ -129,16 +130,12 @@ export function HarmonyInsight() {
       {/* 洞察流：问题 → 技术思考 */}
       {/* ================================================================ */}
       <motion.div
-        className="relative z-10 w-full max-w-2xl mx-auto px-4 pb-20 md:pb-28"
+        className="relative z-10 w-full max-w-2xl mx-auto px-4 pb-12 md:pb-16"
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-20%' }}
         transition={{ delay: 0.6, duration: 0.8 }}
       >
-        <p className="text-xs tracking-[0.2em] text-white/30 text-center mb-6 font-sans">
-          基于南城调研发现的真实痛点
-        </p>
-
         <InsightFlow pairs={INSIGHT_PAIRS} />
       </motion.div>
     </section>
@@ -222,12 +219,12 @@ function InsightFlow({ pairs }: { pairs: { problem: string; solution: string }[]
   return (
     <div className="relative">
       {/* 列标题 */}
-      <div className="flex items-center mb-4">
-        <span className="flex-1 text-right text-xs tracking-[0.2em] text-white/30 font-sans pr-6">
+      <div className="flex items-center mb-3">
+        <span className="flex-1 text-right text-[11px] tracking-[0.2em] text-white/30 font-sans pr-6">
           城市问题
         </span>
         <span className="w-px h-3 bg-white/8" />
-        <span className="flex-1 text-left text-xs tracking-[0.2em] font-sans pl-6" style={{ color: 'var(--color-accent)' }}>
+        <span className="flex-1 text-left text-[11px] tracking-[0.2em] font-sans pl-6" style={{ color: 'var(--color-accent)' }}>
           技术思考
         </span>
       </div>
@@ -239,7 +236,7 @@ function InsightFlow({ pairs }: { pairs: { problem: string; solution: string }[]
           preserveAspectRatio="none"
         >
           {pairs.map((_, i) => {
-            const y = 28 + i * 56 // 行高估算
+            const y = 24 + i * 44 // 行高估算
             return (
               <g key={i}>
                 {/* 水平连接线 */}
@@ -277,7 +274,7 @@ function InsightFlow({ pairs }: { pairs: { problem: string; solution: string }[]
         </svg>
 
         {/* 文本行 */}
-        <div className="flex flex-col gap-2.5">
+        <div className="flex flex-col gap-1.5">
           {pairs.map((pair, i) => (
             <motion.div
               key={pair.problem}
@@ -289,18 +286,18 @@ function InsightFlow({ pairs }: { pairs: { problem: string; solution: string }[]
             >
               {/* 左侧：问题 */}
               <div className="flex-1 text-right pr-5">
-                <span className="inline-block text-sm md:text-base text-white/60 font-sans py-2 px-3 rounded-lg transition-all duration-300 group-hover:text-white/85 group-hover:bg-[rgba(239,68,68,0.06)]">
+                <span className="inline-block text-sm text-white/60 font-sans py-1.5 px-3 rounded-lg transition-all duration-300 group-hover:text-white/85 group-hover:bg-[rgba(239,68,68,0.06)]">
                   {pair.problem}
                 </span>
               </div>
 
               {/* 分隔 */}
-              <div className="w-px h-5 bg-white/6 group-hover:bg-[var(--color-accent)]/30 transition-colors duration-300" />
+              <div className="w-px h-4 bg-white/6 group-hover:bg-[var(--color-accent)]/30 transition-colors duration-300" />
 
               {/* 右侧：方案 */}
               <div className="flex-1 text-left pl-5">
                 <span
-                  className="inline-block text-sm md:text-base font-medium font-sans py-2 px-3 rounded-lg transition-all duration-300 group-hover:bg-[rgba(108,92,231,0.1)]"
+                  className="inline-block text-sm font-medium font-sans py-1.5 px-3 rounded-lg transition-all duration-300 group-hover:bg-[rgba(108,92,231,0.1)]"
                   style={{ color: 'var(--color-accent)' }}
                 >
                   {pair.solution}

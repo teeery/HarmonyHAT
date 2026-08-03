@@ -73,7 +73,7 @@ export function ExploreMap() {
   const handleClose = () => setActiveId(null)
 
   return (
-    <section id="explore-map" className="relative h-screen w-full overflow-hidden">
+    <section id="explore-map" data-snap-page="explore-map" className="relative h-screen w-full overflow-hidden">
       {/* ---- Layer 1: 深色径向渐变背景 ---- */}
       <div
         className="absolute inset-0 z-0"

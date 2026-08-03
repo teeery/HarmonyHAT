@@ -13,7 +13,7 @@ import { HeroSection } from '../../components/HeroSection'
  */
 export function Prologue() {
   return (
-    <section id="prologue" className="relative w-full overflow-hidden" style={{ height: '100dvh', scrollSnapAlign: 'start' }}>
+    <section id="prologue" data-snap-page="prologue" className="relative w-full overflow-hidden" style={{ height: '100dvh' }}>
       <HeroSection />
     </section>
   )

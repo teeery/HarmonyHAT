@@ -90,8 +90,9 @@ export function FutureCity() {
       {FUTURE_SCENES.map((scene) => (
         <div
           key={scene.id}
+          data-snap-page={`future-${scene.id}`}
           className="relative z-10 w-full overflow-x-hidden"
-          style={{ height: '100dvh', scrollSnapAlign: 'start', overflowY: 'auto' }}
+          style={{ height: '100dvh' }}
         >
           {renderStage(scene)}
         </div>

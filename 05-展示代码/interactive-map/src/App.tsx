@@ -8,18 +8,22 @@ import {
   Epilogue,
 } from './scenes'
 import { GlobalNav } from './components/layout/GlobalNav'
+import { usePageScroll } from './hooks'
 
 /**
  * 《鸿蒙未来城市探索馆》
  *
- * 叙事顺序（6 个场景）：
- *   序章（Hero 开场）→ 走进南城 → 调研旅程 → 鸿蒙洞察
- *   → 未来南城 2035 → 青年宣言
+ * 叙事顺序（10 个页面）：
+ *   序章 → 走进南城 → 调研旅程 → 鸿蒙洞察
+ *   → 未来南城 2035（5个 stage） → 青年宣言
  *
- * 交互：全页滚动驱动，右侧全局导航条
+ * 交互：JS 拦截滚轮事件，一次滚轮 = 翻一页
  */
 export default function App() {
   const containerRef = useRef<HTMLDivElement>(null)
+
+  // 页面级滚动：一次滚轮 = 翻一页
+  usePageScroll()
 
   return (
     <div ref={containerRef} className="relative">
