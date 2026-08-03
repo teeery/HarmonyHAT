@@ -13,7 +13,9 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y proximity;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
   background: var(--color-bg-deep);
   color: var(--color-text-primary);
   font-family: var(--font-sans);
@@ -21,6 +23,10 @@ html {
   line-height: var(--leading-relaxed);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow: hidden;
 }
 
 body, #root {
@@ -84,7 +90,9 @@ body, #root {
 /* ---- Tailwind 扩展 ---- */
 @layer components {
   .scene-container {
-    @apply relative w-full min-h-screen overflow-hidden;
+    @apply relative w-full overflow-x-hidden;
+    height: 100dvh;
+    overflow-y: auto;
     scroll-snap-align: start;
   }
 

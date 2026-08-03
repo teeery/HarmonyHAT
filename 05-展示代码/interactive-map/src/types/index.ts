@@ -4,15 +4,12 @@
 
 // ---- 场景系统 ----
 
-/** 全部场景标识（9 个场景） */
+/** 全部场景标识（8 个场景） */
 export type SceneId =
-  | 'preloader'
   | 'prologue'
   | 'explore-map'
   | 'field-research'
   | 'harmony-insight'
-  | 'data-lab'
-  | 'ai-researcher'
   | 'future-city'
   | 'epilogue'
 
@@ -96,6 +93,8 @@ export interface JourneyStop {
   scene: string
   description: string
   highlights: string[]
+  /** 地点配图 */
+  image: string
 }
 
 export interface JourneyDay {
@@ -105,6 +104,8 @@ export interface JourneyDay {
   theme: string
   subtitle: string
   coverIcon: string
+  /** 卡片背景图 */
+  image: string
   /** 该天核心观察 */
   observation: string
   /** 该天核心思考 */
@@ -112,6 +113,52 @@ export interface JourneyDay {
   /** 该天对未来的启发 */
   futureDirection: string
   stops: JourneyStop[]
+}
+
+// ---- 未来南城（第七幕）----
+
+export type FutureStageVariant = 'hero' | 'network' | 'comparison' | 'transform' | 'spotlight'
+
+export interface FutureCityNode {
+  id: string
+  label: string
+  icon?: string
+}
+
+export interface FutureStageConfig {
+  id: string
+  chapterNum: number
+  chapterLabel: string
+  variant: FutureStageVariant
+  title: string | string[]
+  subtitle?: string
+  image?: string
+  /** Hero — 开篇引导文字 */
+  prologue?: string
+  prologueHighlight?: string
+  /** Network — 网络节点 */
+  nodes?: FutureCityNode[]
+  centerLabel?: string
+  evolution?: string[]
+  /** Comparison — 对比面板 */
+  beforeYear?: string
+  beforeLabel?: string
+  beforeDescription?: string
+  beforeItems?: string[]
+  afterYear?: string
+  afterLabel?: string
+  afterDescription?: string
+  afterItems?: string[]
+  /** Transform — 演变阶段 */
+  phases?: { label: string; items: string[] }[]
+  /** Spotlight — 核心聚焦 */
+  focusLabel?: string
+  focusDescription?: string
+  growthSteps?: string[]
+  /** 通用 */
+  harmonyConnection?: string
+  closingQuote?: string
+  quote?: string
 }
 
 // ---- 动画 ----
